@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen: Estructura y Almacenamiento de Datos</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; padding: 20px; color: #333; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; margin: 0; }
+        .container { max-width: 850px; margin: 20px auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); flex: 1; }
+        .hidden { display: none; }
+        h1, h2 { color: #e67e22; text-align: center; }
+        .question { margin-bottom: 30px; padding: 20px; border-radius: 8px; border-left: 6px solid #e67e22; background: #fdfaf8; }
+        .question p { font-weight: bold; margin-bottom: 15px; }
+        .options label { display: block; margin: 12px 0; cursor: pointer; padding: 8px; border-radius: 4px; transition: background 0.2s; }
+        .options label:hover { background: #fef5e7; }
+        input[type="radio"] { margin-right: 10px; transform: scale(1.2); }
+        select { padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 100%; max-width: 350px; margin-top: 5px; }
+        input[type="password"], input[type="text"] { padding: 12px; width: 100%; box-sizing: border-box; margin: 15px 0; border: 2px solid #ddd; border-radius: 6px; font-size: 16px; }
+        button { background: #e67e22; color: white; border: none; padding: 15px 30px; border-radius: 6px; cursor: pointer; font-size: 18px; width: 100%; font-weight: bold; transition: background 0.3s; }
+        button:hover { background: #d35400; }
+        .score-box { font-size: 48px; font-weight: bold; margin: 20px 0; text-align: center; }
+        .pass { color: #2ecc71; }
+        .fail { color: #e74c3c; }
+        .match-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; background: #fff; padding: 10px; border-radius: 4px; border: 1px solid #eee; }
+        footer { background-color: #ffffff; padding: 20px; border-top: 2px solid #e67e22; margin-top: 40px; text-align: center; }
+        .inst-logo { max-height: 60px; width: auto; }
+        .inst-name { font-weight: bold; color: #5f6368; font-size: 1.1em; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container" id="login-section">
+    <h1>💾 Acceso al Practico Evaluativo</h1>
+    <h2 style="font-size: 1.2em; color: #666;">Estructura y Almacenamiento de Datos</h2>
+    <p style="text-align: center;">Introduce tus datos para comenzar.</p>
+    <label>Nombre Completo del Estudiante:</label>
+    <input type="text" id="student-name" placeholder="Ej: Manuela Pérez">
+    <label>Contraseña de Acceso:</label>
+    <input type="password" id="exam-password" placeholder="Clave del docente">
+    <button onclick="checkPassword()">Ingresar al Practico</button>
+    <p id="error-msg" style="color: #e74c3c; text-align: center; display: none; margin-top: 15px;">⚠️ Acceso denegado.</p>
+</div>
+
+<div class="container hidden" id="exam-section">
+    <h1>Evaluación de Medios de Almacenamiento</h1>
+    <hr>
+    <form id="quiz-form">
+        
+        <div class="question">
+            <p>1. ¿Qué es un medio de almacenamiento?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="1"> El soporte físico donde se guardan los datos.</label>
+                <label><input type="radio" name="q1" value="0"> La velocidad del procesador.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>2. ¿Cuáles son los medios de almacenamiento más comunes hoy?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="1"> SSD, HDD, Pendrives y Nube.</label>
+                <label><input type="radio" name="q2" value="0"> Disquetes y Cintas.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>3. ¿Cuál es la diferencia principal entre medios antiguos y actuales?</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="1"> Los actuales son más rápidos, pequeños y de mayor capacidad.</label>
+                <label><input type="radio" name="q3" value="0"> No hay diferencias reales.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>4. ¿Cómo funcionaba una Tarjeta Perforada?</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="1"> Representaba datos mediante agujeros en posiciones específicas.</label>
+                <label><input type="radio" name="q4" value="0"> Usaba imanes para mover la información.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>5. ¿Cuántos Megabytes (MB) equivalen a 3 Gigabytes (GB)?</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="1"> 3072 MB</label>
+                <label><input type="radio" name="q5" value="0"> 300 MB</label>
+		<label><input type="radio" name="q5" value="0"> 30000 MB</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>6. Si tengo 4812,8 MB ¿Cuántos Gigabytes (GB) son?</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="0"> 4.7 GB</label>
+                <label><input type="radio" name="q6" value="1"> 4.8 GB</label>
+		<label><input type="radio" name="q6" value="0"> 47 GB</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>7. ¿Cuántos CDs de 700MB equivalen a un DVD de 4.7GB (4812.8 MB)?</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="1"> Aproximadamente 7 CDs.</label>
+                <label><input type="radio" name="q7" value="0"> 2 CDs.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>8. Manuela tiene un pendrive con: 350MB música, 50MB Word, 0.25GB video ¿cuanto espacio ocupan todos los archivos?</p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="1"> 656 MB</label>
+                <label><input type="radio" name="q8" value="0"> 400 MB</label>
+		<label><input type="radio" name="q8" value="0"> 1024 MB</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>9. ¿Puede Manuela guardar una película de 700MB en su pendrive de 2GB(2048 MB)?</p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="1"> Sí, tiene espacio.</label>
+                <label><input type="radio" name="q9" value="0"> No, no tiene espacio.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>10. ¿Cuánto espacio libre le queda a Manuela después de guardar la película?</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="1"> Le sobran 1348 MB</label>
+                <label><input type="radio" name="q10" value="0"> Le sobran 100 MB</label>
+            </div>
+        </div>
+
+        <button type="button" onclick="evaluateExam()">Finalizar y Ver Calificación</button>
+    </form>
+</div>
+
+<div class="container hidden" id="result-section">
+    <div style="text-align: center;">
+        <h2>Resultado del Examen</h2>
+        <div id="score-display" class="score-box">0</div>
+        <h3 id="status-text"></h3>
+        <button onclick="sendMail()">Enviar reporte al Docente</button>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <img src="logoproa.PNG" alt="Logo Institución" class="inst-logo">
+        <div class="inst-name">ESCUELA EXPERIMENTAL CON ÉNFASIS EN TIC - PROA - SEDE RIO TERCERO</div>
+        <div style="font-size: 0.8em; color: #888;">&copy; 2026 - Profe Pablo - Estructura y Almacenamiento de Datos</div>
+    </div>
+</footer>
+
+<script>
+    const SECRET_KEY = "profe2026"; 
+    let finalScore = 0;
+    let studentName = "";
+
+    function checkPassword() {
+        const userPass = document.getElementById('exam-password').value;
+        const userName = document.getElementById('student-name').value;
+        if (userPass === SECRET_KEY && userName.trim().length > 2) {
+            studentName = userName;
+            document.getElementById('login-section').classList.add('hidden');
+            document.getElementById('exam-section').classList.remove('hidden');
+            window.scrollTo(0,0);
+        } else {
+            document.getElementById('error-msg').style.display = 'block';
+        }
+    }
+
+    function evaluateExam() {
+        const form = document.getElementById('quiz-form');
+        let score = 0;
+        
+        // Iteramos exactamente de q1 a q10 para asegurar que solo haya 10 puntos posibles
+        for(let i=1; i<=10; i++) {
+            const question = document.getElementsByName('q' + i);
+            for(let option of question) {
+                if(option.checked && option.value === "1") {
+                    score++;
+                }
+            }
+        }
+
+        finalScore = score;
+        showResults();
+    }
+
+    function showResults() {
+        document.getElementById('exam-section').classList.add('hidden');
+        document.getElementById('result-section').classList.remove('hidden');
+        window.scrollTo(0,0);
+        
+        const scoreDisplay = document.getElementById('score-display');
+        const statusText = document.getElementById('status-text');
+        
+        scoreDisplay.innerText = finalScore + " / 10";
+        
+        if (finalScore >= 7) {
+            scoreDisplay.className = "score-box pass";
+            statusText.innerText = "¡EXCELENTE! HAS APROBADO";
+            statusText.style.color = "#2ecc71";
+        } else {
+            scoreDisplay.className = "score-box fail";
+            statusText.innerText = "NO SE ALCANZÓ EL PUNTAJE MÍNIMO (7) SIGUE PRACTICANDO";
+            statusText.style.color = "#e74c3c";
+        }
+    }
+
+    function sendMail() {
+        const emailDocente = "pmtorres@escuelasproa.edu.ar"; 
+        const subject = `Examen Almacenamiento - ${studentName}`;
+        const body = `Estudiante: ${studentName}%0D%0APuntaje: ${finalScore}/10%0D%0AEstado: ${finalScore >= 7 ? 'APROBADO' : 'DESAPROBADO'}`;
+        window.location.href = `mailto:${emailDocente}?subject=${subject}&body=${body}`;
+    }
+</script>
+
+</body>
+</html>
