@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen: Algoritmos y Diagramas de Flujo</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; padding: 20px; color: #333; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; margin: 0; }
+        .container { max-width: 850px; margin: 20px auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); flex: 1; }
+        .hidden { display: none; }
+        h1, h2 { color: #1a73e8; text-align: center; }
+        .question { margin-bottom: 30px; padding: 20px; border-radius: 8px; border-left: 6px solid #1a73e8; background: #f8f9fa; }
+        .question p { font-weight: bold; margin-bottom: 15px; }
+        .options label { display: block; margin: 12px 0; cursor: pointer; padding: 8px; border-radius: 4px; transition: background 0.2s; }
+        .options label:hover { background: #e8f0fe; }
+        input[type="radio"] { margin-right: 10px; transform: scale(1.2); }
+        select { padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 100%; max-width: 300px; margin-top: 5px; }
+        input[type="password"], input[type="text"] { padding: 12px; width: 100%; box-sizing: border-box; margin: 15px 0; border: 2px solid #ddd; border-radius: 6px; font-size: 16px; }
+        button { background: #1a73e8; color: white; border: none; padding: 15px 30px; border-radius: 6px; cursor: pointer; font-size: 18px; width: 100%; font-weight: bold; transition: background 0.3s; }
+        button:hover { background: #1557b0; }
+        .score-box { font-size: 48px; font-weight: bold; margin: 20px 0; text-align: center; }
+        .pass { color: #2ecc71; }
+        .fail { color: #e74c3c; }
+        .match-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; background: #fff; padding: 10px; border-radius: 4px; border: 1px solid #eee; }
+        
+        /* Estilos del Footer */
+        footer { background-color: #ffffff; padding: 20px; border-top: 2px solid #1a73e8; margin-top: 40px; text-align: center; }
+        .footer-content { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .inst-logo { max-height: 60px; width: auto; }
+        .inst-name { font-weight: bold; color: #5f6368; font-size: 1.1em; }
+    </style>
+</head>
+<body>
+
+<div class="container" id="login-section">
+    <h1>📝 Acceso al Practico Evaluativo</h1>
+    <p style="text-align: center;">Introduce tus datos para comenzar el práctico.</p>
+    <label>Nombre Completo:</label>
+    <input type="text" id="student-name" placeholder="Ej: Juan Pérez">
+    <label>Contraseña del práctico:</label>
+    <input type="password" id="exam-password" placeholder="Clave proporcionada por el docente">
+    <button onclick="checkPassword()">Ingresar al Examen</button>
+    <p id="error-msg" style="color: #e74c3c; text-align: center; display: none; margin-top: 15px;">⚠️ Datos incorrectos o nombre muy corto.</p>
+</div>
+
+<div class="container hidden" id="exam-section">
+    <h1>Examen de Algoritmos y Diagramas de Flujo</h1>
+    <hr>
+    <form id="quiz-form">
+        <div class="question">
+            <p>1. ¿Qué es un algoritmo?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="0"> Una pieza física de la computadora.</label>
+                <label><input type="radio" name="q1" value="1"> Una secuencia lógica y finita de pasos para resolver un problema.</label>
+                <label><input type="radio" name="q1" value="0"> Un dibujo libre sobre un proceso.</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>2. Verdadero o Falso: Un programa es la implementación de un algoritmo en un lenguaje específico.</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="1"> Verdadero</label>
+                <label><input type="radio" name="q2" value="0"> Falso</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>3. ¿Cuál es el objetivo principal de un Diagrama de Flujo?</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="0"> Escribir código directamente.</label>
+                <label><input type="radio" name="q3" value="1"> Representar gráficamente la lógica de un algoritmo.</label>
+                <label><input type="radio" name="q3" value="0"> Calcular la velocidad de internet.</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>4. Verdadero o Falso: Los algoritmos solo sirven para el área de informática.</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="0"> Verdadero</label>
+                <label><input type="radio" name="q4" value="1"> Falso</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>5. Une el símbolo con su nombre correcto:</p>
+            <div class="match-row">
+                <span>Óvalo / Elipse:</span>
+                <select name="q5_1">
+                    <option value="x">Seleccionar...</option>
+                    <option value="1">Inicio / Fin</option>
+                    <option value="0">Decisión</option>
+                    <option value="0">Proceso</option>
+                </select>
+            </div>
+            <div class="match-row">
+                <span>Rombo:</span>
+                <select name="q5_2">
+                    <option value="x">Seleccionar...</option>
+                    <option value="0">Inicio / Fin</option>
+                    <option value="1">Decisión</option>
+                    <option value="0">Proceso</option>
+                </select>
+            </div>
+        </div>
+        <div class="question">
+            <p>6. ¿Por qué es importante que un algoritmo sea "finito"?</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="1"> Porque debe tener un fin y no ejecutarse por siempre.</label>
+                <label><input type="radio" name="q6" value="0"> Porque debe caber en una sola hoja.</label>
+                <label><input type="radio" name="q6" value="0"> Porque solo puede usar números pequeños.</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>7. Verdadero o Falso: El rectángulo en un diagrama de flujo indica una toma de decisión (Si/No).</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="0"> Verdadero</label>
+                <label><input type="radio" name="q7" value="1"> Falso</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>8. Une la característica con su definición:</p>
+            <div class="match-row">
+                <span>Preciso:</span>
+                <select name="q8_1">
+                    <option value="x">Seleccionar...</option>
+                    <option value="1">Indica el orden de realización de cada paso.</option>
+                    <option value="0">Si se sigue dos veces, se obtiene el mismo resultado.</option>
+                </select>
+            </div>
+            <div class="match-row">
+                <span>Definido:</span>
+                <select name="q8_2">
+                    <option value="x">Seleccionar...</option>
+                    <option value="0">Indica el orden de realización de cada paso.</option>
+                    <option value="1">Si se sigue dos veces, se obtiene el mismo resultado.</option>
+                </select>
+            </div>
+        </div>
+        <div class="question">
+            <p>9. ¿Qué símbolo se utiliza para la entrada y salida de datos (leer/escribir)?</p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="0"> Círculo.</label>
+                <label><input type="radio" name="q9" value="1"> Paralelogramo.</label>
+                <label><input type="radio" name="q9" value="0"> Cuadrado perfecto.</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>10. Verdadero o Falso: Las flechas en el diagrama indican la dirección del flujo de la lógica.</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="1"> Verdadero</label>
+                <label><input type="radio" name="q10" value="0"> Falso</label>
+            </div>
+        </div>
+
+        <button type="button" onclick="evaluateExam()">Calificar y Finalizar</button>
+    </form>
+</div>
+
+<div class="container hidden" id="result-section">
+    <div style="text-align: center;">
+        <h2>Resultado de la Evaluación</h2>
+        <div id="score-display" class="score-box">0</div>
+        <h3 id="status-text"></h3>
+        <p>Se ha generado un informe con tus respuestas.</p>
+        <button onclick="sendMail()">Enviar respuestas al Docente</button>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <img src="logofp.png" alt="Logo Institución" class="inst-logo">
+        
+        <div class="inst-name">Escuela Secuendaria con Formación Profesional Río III</div>
+        
+        <div style="font-size: 0.8em; color: #888;">&copy; 2026 - Profe Pablo - Educ Tec y Ciecias de la Computación</div>
+    </div>
+</footer>
+
+<script>
+    const SECRET_KEY = "profe2026"; 
+    let finalScore = 0;
+    let studentName = "";
+
+    function checkPassword() {
+        const userPass = document.getElementById('exam-password').value;
+        const userName = document.getElementById('student-name').value;
+        if (userPass === SECRET_KEY && userName.trim().length > 2) {
+            studentName = userName;
+            document.getElementById('login-section').classList.add('hidden');
+            document.getElementById('exam-section').classList.remove('hidden');
+            window.scrollTo(0,0);
+        } else {
+            document.getElementById('error-msg').style.display = 'block';
+        }
+    }
+
+    function evaluateExam() {
+        const form = document.getElementById('quiz-form');
+        const data = new FormData(form);
+        let score = 0;
+
+        for (let value of data.values()) {
+            if (value === "1") score++;
+        }
+
+        finalScore = score;
+        showResults();
+    }
+
+    function showResults() {
+        document.getElementById('exam-section').classList.add('hidden');
+        document.getElementById('result-section').classList.remove('hidden');
+        window.scrollTo(0,0);
+        
+        const scoreDisplay = document.getElementById('score-display');
+        const statusText = document.getElementById('status-text');
+        
+        scoreDisplay.innerText = finalScore + " / 10";
+        
+        if (finalScore >= 7) {
+            scoreDisplay.className = "score-box pass";
+            statusText.innerText = "¡FELICITACIONES! HAS APROBADO";
+            statusText.style.color = "#2ecc71";
+        } else {
+            scoreDisplay.className = "score-box fail";
+            statusText.innerText = "LO SIENTO, NO HAS ALCANZADO EL PUNTAJE MÍNIMO (7), repasa los contenidos y vuelve a intentarlo";
+            statusText.style.color = "#e74c3c";
+        }
+    }
+
+    function sendMail() {
+        const emailDocente = "ptorresfpr3@gmail.com"; 
+        const subject = `Examen Algoritmos - ${studentName}`;
+        const body = `Estudiante: ${studentName}%0D%0APuntaje: ${finalScore}/10%0D%0AEstado: ${finalScore >= 7 ? 'APROBADO' : 'DESAPROBADO'}`;
+        
+        window.location.href = `mailto:${emailDocente}?subject=${subject}&body=${body}`;
+    }
+</script>
+
+</body>
+</html>
