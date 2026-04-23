@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen: Diseño de Interfaces y Usabilidad</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; padding: 20px; color: #333; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; margin: 0; }
+        .container { max-width: 850px; margin: 20px auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); flex: 1; }
+        .hidden { display: none; }
+        h1, h2 { color: #8e44ad; text-align: center; } /* Color púrpura para esta materia */
+        .question { margin-bottom: 30px; padding: 20px; border-radius: 8px; border-left: 6px solid #8e44ad; background: #f9f4fc; }
+        .question p { font-weight: bold; margin-bottom: 15px; }
+        .options label { display: block; margin: 12px 0; cursor: pointer; padding: 8px; border-radius: 4px; transition: background 0.2s; }
+        .options label:hover { background: #f4ecf7; }
+        input[type="radio"] { margin-right: 10px; transform: scale(1.2); }
+        input[type="password"], input[type="text"] { padding: 12px; width: 100%; box-sizing: border-box; margin: 15px 0; border: 2px solid #ddd; border-radius: 6px; font-size: 16px; }
+        button { background: #8e44ad; color: white; border: none; padding: 15px 30px; border-radius: 6px; cursor: pointer; font-size: 18px; width: 100%; font-weight: bold; transition: background 0.3s; }
+        button:hover { background: #7d3c98; }
+        .score-box { font-size: 48px; font-weight: bold; margin: 20px 0; text-align: center; }
+        .pass { color: #2ecc71; }
+        .fail { color: #e74c3c; }
+        footer { background-color: #ffffff; padding: 20px; border-top: 2px solid #8e44ad; margin-top: 40px; text-align: center; }
+        .inst-logo { max-height: 60px; width: auto; }
+        .inst-name { font-weight: bold; color: #5f6368; font-size: 1.1em; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container" id="login-section">
+    <h1>🌐 Acceso al Examen</h1>
+    <h2 style="font-size: 1.2em; color: #666;">Diseño de Interfaces y Usabilidad</h2>
+    <p style="text-align: center;">Introduce tus datos para comenzar la evaluación técnica.</p>
+    <label>Nombre Completo del Estudiante:</label>
+    <input type="text" id="student-name" placeholder="Ej: Ana García">
+    <label>Contraseña de Acceso:</label>
+    <input type="password" id="exam-password" placeholder="Clave del docente">
+    <button onclick="checkPassword()">Ingresar al Examen</button>
+    <p id="error-msg" style="color: #e74c3c; text-align: center; display: none; margin-top: 15px;">⚠️ Acceso denegado. Verifica los datos.</p>
+</div>
+
+<div class="container hidden" id="exam-section">
+    <h1>Evaluación: Fundamentos de la Web y HTML</h1>
+    <hr>
+    <form id="quiz-form">
+        
+        <div class="question">
+            <p>1. ¿Qué es Internet?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="1"> Una red global de redes de computadoras interconectadas que utilizan protocolos estandarizados.</label>
+                <label><input type="radio" name="q1" value="0"> Una aplicación que se descarga para ver videos y redes sociales.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>2. ¿Qué significa la sigla HTML?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="0"> High Text Machine Language.</label>
+                <label><input type="radio" name="q2" value="1"> HyperText Markup Language (Lenguaje de Marcado de Hipertexto).</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>3. Una dirección IP es:</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="1"> Una etiqueta numérica que identifica de manera lógica y jerárquica a un dispositivo en la red.</label>
+                <label><input type="radio" name="q3" value="0"> El nombre de usuario que elegimos para entrar a una página web.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>4. ¿Qué significa WWW?</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="1"> World Wide Web.</label>
+                <label><input type="radio" name="q4" value="0"> Web World Wide.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>5. ¿Qué es la URL?</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="1"> La dirección específica que se asigna a cada uno de los recursos disponibles en la red.</label>
+                <label><input type="radio" name="q5" value="0"> El lenguaje con el que se diseñan los botones de una página.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>6. ¿Qué es un Dominio en el contexto de la web?</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="1"> El nombre único y fácil de recordar que se utiliza para identificar un sitio web (ej: google.com).</label>
+                <label><input type="radio" name="q6" value="0"> La carpeta física donde se guardan las fotos del servidor.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>7. En HTML, ¿cuál es la función de la etiqueta &lt;p&gt;?</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="0"> Insertar una imagen o fotografía.</label>
+                <label><input type="radio" name="q7" value="1"> Definir un párrafo de texto.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>8. ¿Para qué se utiliza la etiqueta &lt;title&gt;?</p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="1"> Define el título de la página que se muestra en la pestaña del navegador.</label>
+                <label><input type="radio" name="q8" value="0"> Crea el encabezado principal que se ve dentro del cuerpo de la página.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>9. ¿Cuál es el elemento raíz que contiene todos los demás elementos de una página web?</p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="0"> La etiqueta &lt;body&gt;.</label>
+                <label><input type="radio" name="q9" value="1"> La etiqueta &lt;html&gt;.</label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>10. Si un dominio termina en ".ar" o ".mx", ¿qué estamos identificando?</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="1"> El país al que pertenece el dominio (Argentina y México respectivamente).</label>
+                <label><input type="radio" name="q10" value="0"> Que el sitio web es propiedad de una organización sin fines de lucro.</label>
+            </div>
+        </div>
+
+        <button type="button" onclick="evaluateExam()">Finalizar y Ver Calificación</button>
+    </form>
+</div>
+
+<div class="container hidden" id="result-section">
+    <div style="text-align: center;">
+        <h2>Resultado del Examen</h2>
+        <div id="score-display" class="score-box">0</div>
+        <h3 id="status-text"></h3>
+        <p>Presiona el botón de abajo para enviar tus resultados por correo.</p>
+        <button onclick="sendMail()">Enviar reporte al Docente</button>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <img src="logoproa.PNG" alt="Logo Institución" class="inst-logo">
+        <div class="inst-name">ESCUELA EXPERIMENTAL CON ÉNFASIS EN TIC - PROA - SEDE RIO TERCERO</div>
+        <div style="font-size: 0.8em; color: #888;">&copy; 2026 - Profe Pablo - Diseño de Interfaces y Usabilidad</div>
+    </div>
+</footer>
+
+<script>
+    const SECRET_KEY = "WEB2026"; // Contraseña para este examen
+    let finalScore = 0;
+    let studentName = "";
+
+    function checkPassword() {
+        const userPass = document.getElementById('exam-password').value;
+        const userName = document.getElementById('student-name').value;
+        if (userPass === SECRET_KEY && userName.trim().length > 2) {
+            studentName = userName;
+            document.getElementById('login-section').classList.add('hidden');
+            document.getElementById('exam-section').classList.remove('hidden');
+            window.scrollTo(0,0);
+        } else {
+            document.getElementById('error-msg').style.display = 'block';
+        }
+    }
+
+    function evaluateExam() {
+        const form = document.getElementById('quiz-form');
+        let score = 0;
+        
+        // Conteo exacto de 10 preguntas
+        for(let i=1; i<=10; i++) {
+            const question = document.getElementsByName('q' + i);
+            for(let option of question) {
+                if(option.checked && option.value === "1") {
+                    score++;
+                }
+            }
+        }
+
+        finalScore = score;
+        showResults();
+    }
+
+    function showResults() {
+        document.getElementById('exam-section').classList.add('hidden');
+        document.getElementById('result-section').classList.remove('hidden');
+        window.scrollTo(0,0);
+        
+        const scoreDisplay = document.getElementById('score-display');
+        const statusText = document.getElementById('status-text');
+        
+        scoreDisplay.innerText = finalScore + " / 10";
+        
+        if (finalScore >= 7) {
+            scoreDisplay.className = "score-box pass";
+            statusText.innerText = "¡FELICITACIONES! HAS APROBADO";
+            statusText.style.color = "#2ecc71";
+        } else {
+            scoreDisplay.className = "score-box fail";
+            statusText.innerText = "LO SIENTO, NO HAS ALCANZADO EL PUNTAJE MÍNIMO (7), repasa los contenidos y vuelve a intentarlo";
+            statusText.style.color = "#e74c3c";
+        }
+    }
+
+    function sendMail() {
+        const emailDocente = "pmtorres@escuelasproa.edu.ar"; 
+        const subject = `Examen Interfaces - ${studentName}`;
+        const body = `Estudiante: ${studentName}%0D%0AMateria: Diseño de Interfaces%0D%0APuntaje: ${finalScore}/10%0D%0AEstado: ${finalScore >= 7 ? 'APROBADO' : 'DESAPROBADO'}`;
+        window.location.href = `mailto:${emailDocente}?subject=${subject}&body=${body}`;
+    }
+</script>
+
+</body>
+</html>
